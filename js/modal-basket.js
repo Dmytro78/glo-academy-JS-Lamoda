@@ -9,6 +9,7 @@ const cartModalOpen = () => {
 
 const cartModalClose = () => {
     cartOverlay.classList.remove('cart-overlay-open');
+    window.addEventListener("keydown", closeEsc);
 };
 
 
@@ -23,3 +24,9 @@ cartOverlay.addEventListener('click', e => {
         cartModalClose();
     }
 });
+
+function closeEsc(e) {
+    if (e.code === "Escape") {
+        cartModalClose(e);
+    }
+}
