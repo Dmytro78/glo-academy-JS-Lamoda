@@ -1,5 +1,5 @@
-'use strict';
-let hash = location.hash.substring(1);
+// 'use strict';
+// let hash = location.hash.substring(1);
 
 try {
 
@@ -55,12 +55,12 @@ try {
 
     window.addEventListener('hashchange', () => {
         hash = location.hash.substring(1);
-        getGoods(renderGoodsList, hash);
+        getGoods(renderGoodsList, 'category', hash);
         changeTitle();
     });
 
     changeTitle();
-    getGoods(renderGoodsList, hash);
+    getGoods(renderGoodsList, 'category', hash);
 
 } catch (err) {
     console.warn(err);
