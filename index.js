@@ -69,6 +69,7 @@ const deleteItemCart = id => {
     const cartItems = getLocalStorage();
     const newCartItems = cartItems.filter(item => item.id !== id);
     setLocalStorage(newCartItems);
+    updateCountGoodsCart();
 };
 
 cartListGoods.addEventListener('click', e => {
@@ -161,6 +162,21 @@ const getGoods = (callback, prop, value) => {
             console.error(err);
         });
 };
+
+const declOfNum = (n, titles) => {
+    return n + ' ' + titles[n % 10 === 1 && n % 100 !== 11 ?
+        0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
+};
+
+const updateCountGoodsCart = () => {
+    if (getLocalStorage().length) {
+        subheaderCart.textContent = declOfNum(getLocalStorage().length, ['товара', 'товара', 'товаров']);
+    } else {
+        subheaderCart.textContent = 'Корзина';
+    }
+};
+
+updateCountGoodsCart();
 
 //goods pages
 
@@ -293,6 +309,7 @@ try {
             const cardData = getLocalStorage();
             cardData.push(data);
             setLocalStorage(cardData);
+            updateCountGoodsCart();
         });
     };
 
