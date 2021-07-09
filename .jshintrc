@@ -10,7 +10,7 @@
 	"browser": true,
 	"devel": true,
 	"jquery": true,
-	"esversion": 9,
+	"esversion": 11,
 	"eqeqeq": true,
 	"latedef": true,
 	"noempty": true,
